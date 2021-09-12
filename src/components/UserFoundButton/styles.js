@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.button`
     width: min(500px, 100vw);
-    height: 100px;
+    height: 85px;
+
+    margin-top: 10px;
+
+    border: none;
 
     cursor: pointer;
 
@@ -28,9 +32,8 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: flex-start;
 
-    height: 90%;
-
-    margin: 2px 0 0 90px;
+    height: 100%;
+    margin: 0px 0 0 90px;
 
     > span{
         font-size: 20px;
@@ -44,16 +47,20 @@ export const Content = styled.div`
 
     > div {
         display: flex;
-
-        position: absolute;
-        bottom: 0;
-
-        margin-bottom: 10px;
+        align-content: space-between;   
         
-        > span {
+        margin-top: 17px;
+
+        > h2 {
             font-size: 15px;
 
-            & + span {
+            color: #808080;
+
+            > span {
+                color: #000;
+            }
+
+            & + h2 {
                 margin-left: 10px;
             }
         }

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import { Container, Logo, SearchBar, SearchButton } from './styles';
+import { Container, Logo, SearchBar, SearchButton, SearchLogo } from './styles';
 
-import UserFoundButton from '../../components/UserFoundButton'; 
+import UserFoundButton from '../../components/UserFoundButton';
 
 function SearchUser() {
 
     const [search, setSearch] = useState('');
-    const [searchResult, setSearchResult] = useState('');
+    const [searchResult, setSearchResult] = useState();
 
     function searchUser() {
         if (!search) return;
@@ -23,7 +23,7 @@ function SearchUser() {
                 followers: res.data.followers,
                 following: res.data.following
             });
-        }).catch(() => {});
+        }).catch(() => { });
     }
 
     return (
@@ -35,20 +35,21 @@ function SearchUser() {
                 placeholder="Digite o user do Github"
                 onChange={event => setSearch(event.target.value)}
             />
-            <SearchButton
-                type="button"
-                onClick={() => searchUser(search)}
-            >pesquisar
+            <SearchButton>
+                <SearchLogo />
+                <button type="button" onClick={() => searchUser(search)}>Pesquisar</button>
             </SearchButton>
 
-            <UserFoundButton
-                login={searchResult.login}
-                avatarUrl={searchResult.avatarUrl}
-                linkPerfil={searchResult.linkPerfil}
-                name={searchResult.name}
-                followers={searchResult.followers}
-                following={searchResult.following}
-            />                
+            {searchResult && (
+                <UserFoundButton
+                    login={searchResult.login}
+                    avatarUrl={searchResult.avatarUrl}
+                    linkPerfil={searchResult.linkPerfil}
+                    name={searchResult.name}
+                    followers={searchResult.followers}
+                    following={searchResult.following}
+                />
+            )}
         </Container>
     );
 }

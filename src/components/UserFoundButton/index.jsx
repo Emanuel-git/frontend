@@ -18,17 +18,17 @@ function UserFoundButton({
     const history = useHistory();
 
     return (
-        <Container type="button" onClick={() => history.push(`/users?user=${login}`)}>
+        <Container type="button" onClick={() => history.push(`/users/${login}`)}>
             <Avatar>
                 <img src={avatarUrl} alt={login} />
             </Avatar>
 
             <Content>
                 <span>{name}</span>
-                <a href={linkPerfil} target="_blank" >{linkPerfil}</a>
+                <a href={linkPerfil} target="_blank">{linkPerfil}</a>
                 <div>
-                    <span>Seguidores: {followers}</span>
-                    <span>Seguindo: {followers}</span>
+                    <h2>Seguidores: <span>{followers}</span></h2>
+                    <h2>Seguindo: <span>{following}</span></h2>
                 </div>
             </Content>
         </Container>
