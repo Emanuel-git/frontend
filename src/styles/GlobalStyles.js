@@ -6,6 +6,8 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
 
-        background: #fff;
+        background: #0d1117;
+
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 `;

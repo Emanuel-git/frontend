@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Location } from '../../styles/icons';
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -8,8 +10,8 @@ export const Container = styled.div`
 
     margin: 30px auto;
 
-    width: 60vw;
-    height: 100vh;
+    /* width: 60vw; */
+    /* height: 100vh; */
 `;
 
 export const Banner = styled.div`
@@ -18,24 +20,15 @@ export const Banner = styled.div`
 
     align-items: center;
 
-    width: 99%;
-    height: 290px;
+    width: 50%;
 
     margin-top: 10px;
 
     position: relative;
-`;
 
-export const Avatar = styled.div`
-    width: 280px;
-    height: 280px;
-
-    position: absolute;
-    left: 0;
-
-    > img {
-        width: 100%;
-        height: 100%;
+    img {
+        width: 230px;
+        height: 230px;
 
         border-radius: 50%;
     }
@@ -45,46 +38,75 @@ export const Details = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 60%;
-    height: 85%;
+    margin-left: 50px;
 
-    position: absolute;
-    right: 0;
+    width: 90%;
 
     > h1 {
-        font-size: 25px;
+        font-size: 20px;
+        color: #c9d1d9;
     }
 
     > h2 {
-        font-size: 20px;
+        font-size: 15px;
         color: #808080;
     }
 
     p {
-        font-size: 20px;
+        font-size: 15px;
+
+        color: #c9d1d9;
 
         margin-top: 10px;
     }
 
     > div.follow {
         display: flex;
+        align-items: center;
 
-        margin-top: 30px;
+        margin-top: 10px;
+
+        color: #8b949e;
 
         > span {
-            font-size: 18px;
-
-            color: #808080;
+            font-size: 15px;
         }
 
         > h3 {
-            margin-left: 3px;
+            font-size: 15px;
         }
 
         h3 + span {
             margin-left: 10px;
         }
     }
+
+    > div.location {
+        display: flex;
+        align-items: center;
+
+        margin-top: 10px;
+
+        color: #8b949e;
+
+        > span {
+            font-size: 15px;
+        }   
+    }
 `;
 
-export const Repos = styled.div``;
+export const LocationLogo = styled(Location)`
+    width: 20px;
+    height: 20px;
+
+    fill: #8b949e;
+`;
+
+export const Repos = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 30px;
+
+    width: 50%;
+`;

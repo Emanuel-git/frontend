@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
-import { Container, Banner, Avatar, Details, Repos } from './styles';
+import { Container, Banner, Avatar, Details, Repos, LocationLogo } from './styles';
 import Repo from '../../components/Repo';
 
 function UserPage() {
@@ -12,7 +12,7 @@ function UserPage() {
     const user = params.user ? params.user : {};
 
     const [userInfo, setUserInfo] = useState({});
-    const [userRepos, setUserRepos] = useState();
+    const [userRepos, setUserRepos] = useState([]);
 
     async function getUserInfo() {
         const res = await axios.get(`https://api.github.com/users/${user}`);
@@ -34,9 +34,8 @@ function UserPage() {
     return (
         <Container>
             <Banner>
-                <Avatar>
-                    <img src={userInfo.avatar_url} alt={userInfo.login} />
-                </Avatar>
+                
+                <img src={userInfo.avatar_url} alt={userInfo.login} />
 
                 <Details>
                     <h1>{userInfo.name}</h1>
@@ -48,11 +47,27 @@ function UserPage() {
                         <span>seguidores:</span> <h3>{userInfo.followers}</h3>
                         <span>seguindo:</span> <h3>{userInfo.following}</h3>
                     </div>
+
+                    <div className="location">
+                        <LocationLogo />
+                        <span>{userInfo.location}</span>
+                    </div>
                 </Details>
             </Banner>
 
             <Repos>
-                <Repo></Repo>
+                {userRepos.map(repo => (
+                        <Repo
+                             key={repo.id}
+                             name={repo.name}
+                             url={repo.html_url}
+                             description={repo.description}
+                             createdAt={repo.created_at}
+                             updatedAt={repo.updated_at}
+                             language={repo.language}
+                        />
+                    )
+                )}
             </Repos>
         </Container>
     );
