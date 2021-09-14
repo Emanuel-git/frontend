@@ -102,6 +102,22 @@ export const LocationLogo = styled(Location)`
     fill: #8b949e;
 `;
 
+export const FilterBar = styled.div`
+    display: flex;
+    justify-content: center;
+
+    margin-top: 30px;
+
+    width: 50%;
+`;
+
+export const FilterSelect = styled.select`
+    width: 100px;
+    height: 50px;
+
+    color: #8b949e;
+`;
+
 export const Repos = styled.div`
     display: flex;
     flex-direction: column;

@@ -25,7 +25,7 @@ function UserFoundButton({
 
             <Content>
                 <span>{name}</span>
-                <a href={linkPerfil} target="_blank">{linkPerfil}</a>
+                <span>{linkPerfil}</span>
                 <div>
                     <h2>Seguidores: <span>{followers}</span></h2>
                     <h2>Seguindo: <span>{following}</span></h2>

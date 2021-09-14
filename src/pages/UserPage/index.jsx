@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
-import { Container, Banner, Avatar, Details, Repos, LocationLogo } from './styles';
+import { Container, Banner, Details, Repos, LocationLogo, FilterBar, FilterSelect } from './styles';
 import Repo from '../../components/Repo';
 
 function UserPage() {
@@ -55,6 +55,13 @@ function UserPage() {
                 </Details>
             </Banner>
 
+            <FilterBar>
+                <FilterSelect>
+                    <option value="">less stars</option>
+                    <option value="">more stars</option>
+                </FilterSelect>
+            </FilterBar>
+
             <Repos>
                 {userRepos.map(repo => (
                         <Repo
@@ -62,7 +69,7 @@ function UserPage() {
                              name={repo.name}
                              url={repo.html_url}
                              description={repo.description}
-                             createdAt={repo.created_at}
+                             stars={repo.stargazers_count}
                              updatedAt={repo.updated_at}
                              language={repo.language}
                         />

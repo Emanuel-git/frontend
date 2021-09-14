@@ -15,6 +15,8 @@ export const Container = styled.div`
 
 export const Logo = styled(Github)`
     width: 160px;
+
+    fill: #8b949e;
 `;
 
 export const SearchBar = styled.input`
@@ -43,6 +45,8 @@ export const SearchButton = styled.div`
 
         font-size: 15px;
 
+        color: #8b949e;
+
         cursor: pointer;
     }
 `;
@@ -50,4 +54,6 @@ export const SearchButton = styled.div`
 export const SearchLogo = styled(Search)`
     width: 20px;
     margin-right: 3px;
+
+    fill: #8b949e;
 `;

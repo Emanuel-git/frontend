@@ -35,14 +35,15 @@ export const Content = styled.div`
     height: 100%;
     margin: 0px 0 0 90px;
 
-    > span{
+    > span:nth-child(1) {
         font-size: 20px;
+
+        color: #c9d1d9;
     }
 
-    > a {
-        text-decoration: none;
+    > span:nth-child(2) {
         font-size: 15px;
-        color: #808080;
+        color: #8b949e;
     }
 
     > div {
@@ -54,11 +55,7 @@ export const Content = styled.div`
         > h2 {
             font-size: 15px;
 
-            color: #808080;
-
-            > span {
-                color: #000;
-            }
+            color: #8b949e;
 
             & + h2 {
                 margin-left: 10px;
