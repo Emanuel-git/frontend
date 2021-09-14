@@ -11,7 +11,7 @@ export const Container = styled.div`
     margin: 30px auto;
 
     button {
-        border: 1px solid #fff;
+        border: none;
 
         cursor: pointer;
     }
