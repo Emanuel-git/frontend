@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
 import {
     Container,
+    BackIcon,
     Banner,
     Details,
     Repos,
@@ -17,6 +18,8 @@ import Repo from '../../components/Repo';
 
 function UserPage() {
     const params = useParams();
+
+    const history = useHistory();
 
     const user = params.user ? params.user : {};
 
@@ -115,6 +118,10 @@ function UserPage() {
 
     return (
         <Container>
+           <button type="button" onClick={() => history.push('/')}>
+               <BackIcon />
+           </button>
+
             <Banner>
                 
                 <img src={userInfo.avatar_url} alt={userInfo.login} />

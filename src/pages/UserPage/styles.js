@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { People, Location } from '../../styles/icons';
+import { People, Location, ArrowBack } from '../../styles/icons';
 
 export const Container = styled.div`
     display: flex;
@@ -9,6 +9,19 @@ export const Container = styled.div`
     align-items: center;
 
     margin: 30px auto;
+
+    button {
+        border: 1px solid #fff;
+
+        cursor: pointer;
+    }
+`;
+
+export const BackIcon = styled(ArrowBack)`
+    width: 40px;
+    height: 30px;
+
+    fill: #c9d1d9;
 `;
 
 export const Banner = styled.div`
