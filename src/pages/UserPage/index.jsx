@@ -22,7 +22,6 @@ function UserPage() {
 
     const [userInfo, setUserInfo] = useState({});
     const [userRepos, setUserRepos] = useState([]);
-    const [repos, setRepos] = useState([]);
     const [reposRender, setReposRender] = useState();
 
     async function getUserInfo() {
@@ -38,6 +37,8 @@ function UserPage() {
     }
 
     function changeReposOrdenation(ordenation) {
+        const [...repos] = userRepos;
+
         if (ordenation === 'starsASC') {
             repos.sort((repoA, repoB) => {
                 if (repoA.stargazers_count < repoB.stargazers_count) return -1
@@ -95,7 +96,7 @@ function UserPage() {
 
     useEffect(() => {
         getUserInfo();
-        getUserRepos();      
+        getUserRepos();    
     }, []);
 
     useEffect(() => {
