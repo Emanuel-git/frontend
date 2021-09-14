@@ -3,7 +3,16 @@ import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
-import { Container, Banner, Details, Repos, LocationLogo, FilterBar, FilterSelect } from './styles';
+import {
+    Container,
+    Banner,
+    Details,
+    Repos,
+    LocationIcon,
+    FilterBar,
+    PeopleIcon
+} from './styles';
+
 import Repo from '../../components/Repo';
 
 function UserPage() {
@@ -13,6 +22,8 @@ function UserPage() {
 
     const [userInfo, setUserInfo] = useState({});
     const [userRepos, setUserRepos] = useState([]);
+    const [repos, setRepos] = useState([]);
+    const [reposRender, setReposRender] = useState();
 
     async function getUserInfo() {
         const res = await axios.get(`https://api.github.com/users/${user}`);
@@ -26,10 +37,80 @@ function UserPage() {
         setUserRepos(res.data);
     }
 
+    function changeReposOrdenation(ordenation) {
+        if (ordenation === 'starsASC') {
+            repos.sort((repoA, repoB) => {
+                if (repoA.stargazers_count < repoB.stargazers_count) return -1
+                else return true;
+            })
+
+            setReposRender(repos.map(repo => (
+                <Repo
+                    key={repo.id}
+                    name={repo.name}
+                    url={repo.html_url}
+                    description={repo.description}
+                    stars={repo.stargazers_count}
+                    updatedAt={repo.updated_at}
+                    language={repo.language}
+                />
+            )));
+        }
+        
+        if (ordenation === 'starsDESC') {
+            repos.sort((repoA, repoB) => {
+                if (repoA.stargazers_count > repoB.stargazers_count) return -1
+                else return true;
+            })
+
+            setReposRender(repos.map(repo => (
+                <Repo
+                    key={repo.id}
+                    name={repo.name}
+                    url={repo.html_url}
+                    description={repo.description}
+                    stars={repo.stargazers_count}
+                    updatedAt={repo.updated_at}
+                    language={repo.language}
+                />
+            )));
+        }
+
+        if (ordenation === 'default') {
+            setReposRender(userRepos.map(repo => (
+                <Repo
+                    key={repo.id}
+                    name={repo.name}
+                    url={repo.html_url}
+                    description={repo.description}
+                    stars={repo.stargazers_count}
+                    updatedAt={repo.updated_at}
+                    language={repo.language}
+                />
+            )));
+        }
+
+        return;
+    }
+
     useEffect(() => {
         getUserInfo();
-        getUserRepos();
+        getUserRepos();      
     }, []);
+
+    useEffect(() => {
+        setReposRender(userRepos.map(repo => (
+            <Repo
+                key={repo.id}
+                name={repo.name}
+                url={repo.html_url}
+                description={repo.description}
+                stars={repo.stargazers_count}
+                updatedAt={repo.updated_at}
+                language={repo.language}
+            />
+        )))
+    }, [userRepos]);
 
     return (
         <Container>
@@ -44,37 +125,28 @@ function UserPage() {
                     <p>{userInfo.bio}</p>
 
                     <div className="follow">
-                        <span>seguidores:</span> <h3>{userInfo.followers}</h3>
-                        <span>seguindo:</span> <h3>{userInfo.following}</h3>
+                        <PeopleIcon />
+                        <h3>{userInfo.followers}</h3><span>seguidores .</span>
+                        <span>seguindo</span><h3>{userInfo.following}</h3>
                     </div>
 
                     <div className="location">
-                        <LocationLogo />
+                        <LocationIcon />
                         <span>{userInfo.location}</span>
                     </div>
                 </Details>
             </Banner>
 
             <FilterBar>
-                <FilterSelect>
-                    <option value="">less stars</option>
-                    <option value="">more stars</option>
-                </FilterSelect>
+                <select onChange={event => changeReposOrdenation(event.target.value)}>
+                    <option value="default">default</option>
+                    <option value="starsASC">less stars</option>
+                    <option value="starsDESC">more stars</option>
+                </select>
             </FilterBar>
 
             <Repos>
-                {userRepos.map(repo => (
-                        <Repo
-                             key={repo.id}
-                             name={repo.name}
-                             url={repo.html_url}
-                             description={repo.description}
-                             stars={repo.stargazers_count}
-                             updatedAt={repo.updated_at}
-                             language={repo.language}
-                        />
-                    )
-                )}
+                {reposRender}
             </Repos>
         </Container>
     );

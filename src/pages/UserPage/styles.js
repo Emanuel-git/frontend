@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Location } from '../../styles/icons';
+import { People, Location } from '../../styles/icons';
 
 export const Container = styled.div`
     display: flex;
@@ -9,9 +9,6 @@ export const Container = styled.div`
     align-items: center;
 
     margin: 30px auto;
-
-    /* width: 60vw; */
-    /* height: 100vh; */
 `;
 
 export const Banner = styled.div`
@@ -68,16 +65,21 @@ export const Details = styled.div`
 
         color: #8b949e;
 
-        > span {
+        font-size: 15px;
+
+        h3 {
             font-size: 15px;
+            margin-right: 3px;
+
+            color: #c9d1d9;
         }
 
-        > h3 {
-            font-size: 15px;
+        span + h3 {
+            margin-left: 3px;
         }
 
-        h3 + span {
-            margin-left: 10px;
+        span + span {
+            margin-left: 5px;
         }
     }
 
@@ -95,7 +97,16 @@ export const Details = styled.div`
     }
 `;
 
-export const LocationLogo = styled(Location)`
+export const PeopleIcon = styled(People)`
+    width: 20px;
+    height: 20px;
+
+    margin-right: 3px;
+
+    fill: #8b949e;
+`;
+
+export const LocationIcon = styled(Location)`
     width: 20px;
     height: 20px;
 
@@ -109,13 +120,17 @@ export const FilterBar = styled.div`
     margin-top: 30px;
 
     width: 50%;
-`;
 
-export const FilterSelect = styled.select`
-    width: 100px;
-    height: 50px;
+    select {
+        width: 100px;
+        height: 50px;
 
-    color: #8b949e;
+        font-size: 15px;
+
+        color: #c9d1d9;
+
+        border: none;
+    }
 `;
 
 export const Repos = styled.div`
