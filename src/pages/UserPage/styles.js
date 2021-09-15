@@ -13,6 +13,9 @@ export const Container = styled.div`
     button {
         border: none;
 
+        position: absolute;
+        left: 200px;
+
         cursor: pointer;
     }
 `;
