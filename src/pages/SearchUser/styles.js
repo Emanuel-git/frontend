@@ -23,7 +23,7 @@ export const SearchBar = styled.input`
     display:  flex;
     text-align: center;
 
-    width: min(500px, 100vw);
+    width: min(500px, 90vw);
     height: 30px;
 
     border: none;
