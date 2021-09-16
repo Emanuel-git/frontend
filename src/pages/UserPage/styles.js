@@ -18,7 +18,7 @@ export const Container = styled.div`
 
         cursor: pointer;
 
-        @media (max-width: 400px) {
+        @media (max-width: 500px) {
             top: 10px;
             left: 10px;
         }
@@ -52,7 +52,7 @@ export const Banner = styled.div`
     }
 
     
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
         flex-direction: column;
 
         width: 100vw;
@@ -129,7 +129,7 @@ export const Details = styled.div`
         }   
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
         margin-top: 20px;
     }
 `;
@@ -169,7 +169,7 @@ export const FilterBar = styled.div`
         border: none;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
         justify-content: start;
         
         width: 90vw;
@@ -186,7 +186,7 @@ export const Repos = styled.div`
 
     width: 50%;
 
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
         align-items: start;
         
         width: 90vw;
