@@ -17,6 +17,11 @@ export const Container = styled.div`
         left: 200px;
 
         cursor: pointer;
+
+        @media (max-width: 400px) {
+            top: 10px;
+            left: 10px;
+        }
     }
 `;
 
@@ -44,6 +49,18 @@ export const Banner = styled.div`
         height: 230px;
 
         border-radius: 50%;
+    }
+
+    
+    @media (max-width: 400px) {
+        flex-direction: column;
+
+        width: 100vw;
+        
+        > img {
+            width: 115px;
+            height: 115px;
+        }
     }
 `;
 
@@ -111,6 +128,10 @@ export const Details = styled.div`
             font-size: 15px;
         }   
     }
+
+    @media (max-width: 400px) {
+        margin-top: 20px;
+    }
 `;
 
 export const PeopleIcon = styled(People)`
@@ -147,6 +168,14 @@ export const FilterBar = styled.div`
 
         border: none;
     }
+
+    @media (max-width: 400px) {
+        justify-content: start;
+        
+        width: 90vw;
+        
+        margin-left: 50px;
+    }
 `;
 
 export const Repos = styled.div`
@@ -156,4 +185,10 @@ export const Repos = styled.div`
     margin-top: 30px;
 
     width: 50%;
+
+    @media (max-width: 400px) {
+        align-items: start;
+        
+        width: 90vw;
+    }
 `;
