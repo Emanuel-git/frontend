@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.button`
-    width: min(500px, 100vw);
+    width: min(500px, 90vw);
     height: 85px;
 
     margin-top: 10px;
@@ -44,6 +44,10 @@ export const Content = styled.div`
     > span:nth-child(2) {
         font-size: 15px;
         color: #8b949e;
+
+        @media (max-width: 500px) {
+            font-size: 14px;
+        }
     }
 
     > div {
@@ -51,6 +55,10 @@ export const Content = styled.div`
         align-content: space-between;   
         
         margin-top: 17px;
+
+        @media (max-width: 500px) {
+            margin-top: 5px;
+        }
 
         > h2 {
             font-size: 15px;
