@@ -166,6 +166,8 @@ export const FilterBar = styled.div`
 
         color: #c9d1d9;
 
+        outline: none;
+
         border: none;
     }
 
