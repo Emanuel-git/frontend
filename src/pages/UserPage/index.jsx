@@ -120,12 +120,12 @@ function UserPage() {
 
     return (
         <Container>
+            <button type="button" onClick={() => history.push('/')}>
+                <BackIcon />
+            </button>
+            
             {userInfo ? (
                 <>
-                    <button type="button" onClick={() => history.push('/')}>
-                        <BackIcon />
-                    </button>
-
                     <Banner>
 
                         <img src={userInfo.avatar_url} alt={userInfo.login} />
