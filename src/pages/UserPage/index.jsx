@@ -11,7 +11,9 @@ import {
     Repos,
     LocationIcon,
     FilterBar,
-    PeopleIcon
+    PeopleIcon,
+    GithubAltLogo,
+    NotFoundInfo
 } from './styles';
 
 import Repo from '../../components/Repo';
@@ -23,7 +25,7 @@ function UserPage() {
 
     const user = params.user ? params.user : {};
 
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState();
     const [userRepos, setUserRepos] = useState([]);
     const [reposRender, setReposRender] = useState();
 
@@ -60,7 +62,7 @@ function UserPage() {
                 />
             )));
         }
-        
+
         if (ordenation === 'starsDESC') {
             repos.sort((repoA, repoB) => {
                 if (repoA.stargazers_count > repoB.stargazers_count) return -1
@@ -99,7 +101,7 @@ function UserPage() {
 
     useEffect(() => {
         getUserInfo();
-        getUserRepos();    
+        getUserRepos();
     }, []);
 
     useEffect(() => {
@@ -118,44 +120,56 @@ function UserPage() {
 
     return (
         <Container>
-           <button type="button" onClick={() => history.push('/')}>
-               <BackIcon />
-           </button>
+            <button type="button" onClick={() => history.push('/')}>
+                <BackIcon />
+            </button>
+            
+            {userInfo ? (
+                <>
+                    <Banner>
 
-            <Banner>
-                
-                <img src={userInfo.avatar_url} alt={userInfo.login} />
+                        <img src={userInfo.avatar_url} alt={userInfo.login} />
 
-                <Details>
-                    <h1>{userInfo.name}</h1>
-                    <h2>{userInfo.login}</h2>
+                        <Details>
+                            <h1>{userInfo.name}</h1>
+                            <h2>{userInfo.login}</h2>
 
-                    <p>{userInfo.bio}</p>
+                            <p>{userInfo.bio}</p>
 
-                    <div className="follow">
-                        <PeopleIcon />
-                        <h3>{userInfo.followers}</h3><span>seguidores .</span>
-                        <span>seguindo</span><h3>{userInfo.following}</h3>
-                    </div>
+                            <div className="follow">
+                                <PeopleIcon />
+                                <h3>{userInfo.followers}</h3><span>seguidores .</span>
+                                <span>seguindo</span><h3>{userInfo.following}</h3>
+                            </div>
 
-                    <div className="location">
-                        <LocationIcon />
-                        <span>{userInfo.location}</span>
-                    </div>
-                </Details>
-            </Banner>
+                            <div className="location">
+                                <LocationIcon />
+                                <span>{userInfo.location}</span>
+                            </div>
+                        </Details>
+                    </Banner>
 
-            <FilterBar>
-                <select onChange={event => changeReposOrdenation(event.target.value)}>
-                    <option value="default">default</option>
-                    <option value="starsASC">less stars</option>
-                    <option value="starsDESC">more stars</option>
-                </select>
-            </FilterBar>
+                    <FilterBar>
+                        <select onChange={event => changeReposOrdenation(event.target.value)}>
+                            <option value="default">default</option>
+                            <option value="starsASC">less stars</option>
+                            <option value="starsDESC">more stars</option>
+                        </select>
+                    </FilterBar>
 
-            <Repos>
-                {reposRender}
-            </Repos>
+                    <Repos>
+                        {reposRender}
+                    </Repos>
+                </>
+            ) : (
+                <>
+                    <GithubAltLogo />
+
+                    <NotFoundInfo>
+                        <span>Sorry! I couldn't found this user! :(</span>
+                    </NotFoundInfo>
+                </>
+            )}
         </Container>
     );
 }

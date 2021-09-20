@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { People, Location, ArrowBack } from '../../styles/icons';
+import { People, Location, ArrowBack, GithubAlt } from '../../styles/icons';
 
 export const Container = styled.div`
     display: flex;
@@ -166,6 +166,8 @@ export const FilterBar = styled.div`
 
         color: #c9d1d9;
 
+        outline: none;
+
         border: none;
     }
 
@@ -191,4 +193,14 @@ export const Repos = styled.div`
         
         width: 90vw;
     }
+`;
+
+export const NotFoundInfo = styled.div`
+    color: #c9d1d9;
+`;
+
+export const GithubAltLogo = styled(GithubAlt)`
+    width: 160px;
+
+    color: #8b949e;
 `;
