@@ -142,10 +142,12 @@ function UserPage() {
                                 <span>seguindo</span><h3>{userInfo.following}</h3>
                             </div>
 
-                            <div className="location">
-                                <LocationIcon />
-                                <span>{userInfo.location}</span>
-                            </div>
+                            {userInfo.location && (
+                                <div className="location">
+                                    <LocationIcon />
+                                    <span>{userInfo.location}</span>
+                                </div>)
+                            }
                         </Details>
                     </Banner>
 

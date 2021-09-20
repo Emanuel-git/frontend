@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
-import { Container, Logo, SearchBar, SearchButton, SearchLogo } from './styles';
+import { Container, Logo, SearchLogo } from './styles';
 
 import UserFoundButton from '../../components/UserFoundButton';
 
@@ -12,7 +12,9 @@ function SearchUser() {
     const [search, setSearch] = useState('');
     const [searchResult, setSearchResult] = useState();
 
-    function searchUser() {
+    function searchUser(event) {
+        event.preventDefault();
+
         if (!search) return;
 
         setSearchingState('pesquisando...');
@@ -37,17 +39,19 @@ function SearchUser() {
         <Container>
             <Logo />
 
-            <form onSubmit={() => searchUser(search)}>
-                <SearchBar
+            <form action="" onSubmit={event => searchUser(event)}>
+                <input
                     type="search"
-                    placeholder="Digite o user do Github"
+                    placeholder="search on github"
                     onChange={event => setSearch(event.target.value)}
                 />
-                
-                <SearchButton>
-                    <SearchLogo />
-                    <button type="submit">{searchingState}</button>
-                </SearchButton>
+
+                <div>
+                    <button type="submit">
+                        <SearchLogo />
+                        <span>{searchingState}</span>
+                    </button>
+                </div>
             </form>
 
             {searchResult && (

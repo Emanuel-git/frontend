@@ -8,45 +8,47 @@ export const Container = styled.div`
     align-items: center;
 
     margin-top: 100px;
-`;
 
-export const Logo = styled(Github)`
-    width: 160px;
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    fill: #8b949e;
-`;
+        input {
+            display:  flex;
+            text-align: center;
 
-export const SearchBar = styled.input`
-    display:  flex;
-    text-align: center;
+            width: min(500px, 90vw);
+            height: 30px;
 
-    width: min(500px, 90vw);
-    height: 30px;
+            border: none;
 
-    border: none;
+            background: #d1d1d1;
 
-    background: #d1d1d1;
+            outline: none;
+        }
 
-    outline: none;
-`;
+        > div {
+            display: flex;
 
-export const SearchButton = styled.div`
-    display: flex;
+            margin-top: 10px;
 
-    margin-top: 10px;
+            width: 100px;
+            height: 40px;
 
-    width: 100px;
-    height: 40px;
+            > button {
+                border: none;
 
-    > button {
-        border: none;
+                font-size: 15px;
 
-        font-size: 15px;
+                color: #8b949e; 
 
-        color: #8b949e;
+                cursor: pointer;
+            }
 
-        cursor: pointer;
+        }
     }
+    
 `;
 
 export const SearchLogo = styled(Search)`
@@ -54,4 +56,12 @@ export const SearchLogo = styled(Search)`
     margin-right: 3px;
 
     fill: #8b949e;
+`;
+
+export const Logo = styled(Github)`
+    width: 160px;
+
+    fill: #8b949e;
+
+    margin-bottom: 10px;
 `;
