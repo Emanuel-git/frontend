@@ -8,11 +8,14 @@ import UserFoundButton from '../../components/UserFoundButton';
 
 function SearchUser() {
 
+    const [searchingState, setSearchingState] = useState('pesquisar');
     const [search, setSearch] = useState('');
     const [searchResult, setSearchResult] = useState();
 
     function searchUser() {
         if (!search) return;
+
+        setSearchingState('pesquisando...');
 
         axios.get(`https://api.github.com/users/${search}`).then(res => {
             setSearchResult({
@@ -23,7 +26,11 @@ function SearchUser() {
                 followers: res.data.followers,
                 following: res.data.following
             });
-        }).catch(() => { });
+
+            setSearchingState('pesquisar');
+        }).catch(() => {
+            setSearchingState('pesquisar');
+         });
     }
 
     return (
@@ -37,7 +44,7 @@ function SearchUser() {
             />
             <SearchButton>
                 <SearchLogo />
-                <button type="button" onClick={() => searchUser(search)}>Pesquisar</button>
+                <button type="button" onClick={() => searchUser(search)}>{searchingState}</button>
             </SearchButton>
 
             {searchResult && (
