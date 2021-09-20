@@ -37,15 +37,18 @@ function SearchUser() {
         <Container>
             <Logo />
 
-            <SearchBar
-                type="search"
-                placeholder="Digite o user do Github"
-                onChange={event => setSearch(event.target.value)}
-            />
-            <SearchButton>
-                <SearchLogo />
-                <button type="button" onClick={() => searchUser(search)}>{searchingState}</button>
-            </SearchButton>
+            <form onSubmit={() => searchUser(search)}>
+                <SearchBar
+                    type="search"
+                    placeholder="Digite o user do Github"
+                    onChange={event => setSearch(event.target.value)}
+                />
+                
+                <SearchButton>
+                    <SearchLogo />
+                    <button type="submit">{searchingState}</button>
+                </SearchButton>
+            </form>
 
             {searchResult && (
                 <UserFoundButton
