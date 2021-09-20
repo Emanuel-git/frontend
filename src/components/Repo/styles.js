@@ -14,25 +14,24 @@ export const Container = styled.div`
         margin-top: 10px;
     }
 
-    > span:nth-child(1) {
+    > a {
         font-size: 20px;
         font-weight: bold;
         color: #58a6ff;
+
+        text-decoration: none;
     }
 
     > span:nth-child(2) {
         color: #8b949e;
     }
 
-    > span:nth-child(3), span:nth-child(4) {
+    > span:nth-child(3), span:nth-child(5) {
         font-size: 15px;
         color: #8b949e;
     }
 
     > span:nth-child(5) {
-        font-size: 15px;
-        color: #8b949e;
-
         margin-top: 2px;
     }
 
@@ -48,15 +47,6 @@ export const Container = styled.div`
 
             margin-left: 3px;
         }
-    }
-
-    a {
-        text-decoration: none;
-        font-size: 15px;
-
-        margin-top: 5px;
-
-        color: #58a6ff;
     }
 `;
 

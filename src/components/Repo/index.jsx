@@ -34,12 +34,11 @@ function Repo({
 
     return (
       <Container>
-          <span>{name}</span>
+          <a href={url} target="_blank">{name}</a>
           <span>{description}</span>
           <span>{formatUpdatedTime(updatedAt)}</span>
           <div><StarIcon /><span>{stars}</span></div>
           <span>{language}</span>
-          <a href={url} target="_blank" >{url}</a>
       </Container>
   );
 }
